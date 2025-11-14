@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GP_Odev2.RenkSeciciSayfasi"
+             Title="Renk Seçimi"
+             x:Name="RenkSayfasi">
+    <!-- Sayfa arka planını değiştirmek için -->
+    <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="FillAndExpand">
+        <!--Ton ayarlamalarını frame'in üzerine yerleştirdim-->
+        <Frame BackgroundColor="White" 
+               Padding="20" 
+               CornerRadius="10" 
+               HasShadow="True">
+
+            <VerticalStackLayout Spacing="15">
+
+                <Label Text="Renk Seçici" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" />
+                <!-- Kırmızı Ton Slider -->
+                <Label Text="Kırmızı Ton:" />
+                <Grid ColumnDefinitions="*, Auto">
+                    <Slider x:Name="SliderKirmizi" 
+                            Grid.Column="0"
+                            Minimum="0" Maximum="255" Value="128"
+                            MinimumTrackColor="Red"
+                            ValueChanged="Slider_ValueChanged" />
+
+                    <Label x:Name="LabelKirmiziDegeri" Grid.Column="1" Text="128" VerticalOptions="Center" />
+                </Grid>
+                <!--Tonları ve değerlerini grid kullanarak tutuyoruz-->
+
+                <!-- Yeşil Ton Slider -->
+                <Label Text="Yeşil Ton:" />
+                <Grid ColumnDefinitions="*, Auto">
+                    <Slider x:Name="SliderYesil" 
+                            Grid.Column="0"
+                            Minimum="0" Maximum="255" Value="128"
+                            MinimumTrackColor="Green"
+                            ValueChanged="Slider_ValueChanged" />
+
+                    <Label x:Name="LabelYesilDegeri" Grid.Column="1" Text="128" VerticalOptions="Center" />
+                </Grid>
+                <!-- Mavi Ton Slider -->
+                <Label Text="Mavi Ton:" />
+                <Grid ColumnDefinitions="*, Auto">
+                    <Slider x:Name="SliderMavi" 
+                            Grid.Column="0"
+                            Minimum="0" Maximum="255" Value="128"
+                            MinimumTrackColor="Blue"
+                            ValueChanged="Slider_ValueChanged" />
+                    <Label x:Name="LabelMaviDegeri" Grid.Column="1" Text="128" VerticalOptions="Center" />
+                </Grid>
+                <!-- Renk Kodu ve Kopyala Butonu -->
+                <Grid ColumnDefinitions="*, Auto" Margin="0, 10, 0, 0" ColumnSpacing="10">
+                    <Entry x:Name="EntryRenkKodu" 
+                           Grid.Column="0" 
+                           Placeholder="#808080" 
+                           IsReadOnly="True" 
+                           HorizontalTextAlignment="Center" />
+                    <!-- Renk Kodu etiketi gibi davranır, IsReadOnly: dışarıdan renk kodu istemiyoruz -->
+                    <Button Text="Kopyala"
+                            Grid.Column="1"
+                            Clicked="ButtonKopyala_Clicked"
+                            BackgroundColor="#007ACC" 
+                            TextColor="White" />
+                </Grid>
+                <!-- Rastgele (random) Renk Butonu -->
+                <Button Text="Rastgele Renk" 
+                        Clicked="ButtonRastgeleRenk_Clicked"
+                        BackgroundColor="#6A1B9A" 
+                        TextColor="White" />
+
+            </VerticalStackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+</ContentPage>

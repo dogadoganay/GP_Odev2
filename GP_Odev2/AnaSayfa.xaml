@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GP_Odev2.AnaSayfa"
+             Title="Ana Sayfa">
+    <!-- Ödev giriş sayfası, kendimi tanıttığım kısım-->
+    <!--Alt alta, ortaya hizalayarak etiketleri ekledik-->
+    <VerticalStackLayout 
+    Padding="30"
+    Spacing="15"
+    HorizontalOptions="Center"  
+    VerticalOptions="Center">
+        <Image Source="doga_odev_foto.jpg"
+           VerticalOptions="Start"
+           HorizontalOptions="Center" 
+           WidthRequest="250" 
+           HeightRequest="230"
+           Aspect="AspectFill"></Image>
+        <Label Text="Doğa DOĞANAY" FontSize="30" HorizontalOptions="Center" TextColor="DarkSlateGray"/>
+        <!--Kaynaklar kısmından images'a eklediğim resmi image etiketiyle kullandım-->
+        <Label 
+        Text="Bartın Üniversitesi Bilgisayar Mühendisliği" 
+        FontSize="18" 
+        HorizontalOptions="Center" 
+        TextColor="#666666" />
+
+        <Label Text="ÖDEV-1" FontSize="25" TextColor="DarkSlateGray"
+           HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+</ContentPage>

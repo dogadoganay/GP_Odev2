@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GP_Odev2.VKIHesaplamaSayfasi"
+             Title="Vücut Kitle İndeksi">
+
+    <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
+
+        <Label Text="Vücut Kitle İndeksi Hesaplama" 
+               FontSize="Large" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" />
+        <!--Hangi formülün kullanıldığı kullanıcıya gösteriliyor-->
+        <Label Text="VKİ = Kilo (kg) / [Boy (m) * Boy (m)]" 
+               HorizontalOptions="Center" 
+               FontSize="Medium" 
+               TextColor="Gray" />
+
+        <Label Text="Kilonuz (KG):" FontAttributes="Bold" />
+        <Grid ColumnDefinitions="*, 80, Auto">
+        <!--Kilo girişi için slider-->
+            <Slider x:Name="SliderKilo" 
+                    Grid.Column="0"
+                    Minimum="30" 
+                    Maximum="200"   
+                    Value="70"      
+                    MaximumTrackColor="LightGray"
+                    MinimumTrackColor="#007ACC"
+                    ValueChanged="KiloBoy_SliderChanged" />
+            <!--Kilo girişi için entry-->
+            <Entry x:Name="EntryKilo" 
+                   Grid.Column="1"
+                   Text="70" 
+                   Keyboard="Numeric" 
+                   HorizontalTextAlignment="Center"
+                   TextChanged="KiloBoy_EntryChanged" />
+
+            <Label x:Name="LabelKiloDegeri"
+                   Grid.Column="2"
+                   Text="70 kg"
+                   VerticalOptions="Center"
+                   Margin="10, 0, 0, 0"
+                   FontAttributes="Bold" />
+        </Grid>
+
+        <Label Text="Boyunuz (cm):" FontAttributes="Bold" />
+        <Grid ColumnDefinitions="*, 80, Auto">
+            <!--Boy girişi için slider-->
+            <Slider x:Name="SliderBoy" 
+                    Grid.Column="0"
+                    Minimum="100" 
+                    Maximum="220"   
+                    Value="170"     
+                    MaximumTrackColor="LightGray"
+                    MinimumTrackColor="#007ACC"
+                    ValueChanged="KiloBoy_SliderChanged" />
+            <!--Boy girişi için entry-->
+            <Entry x:Name="EntryBoy" 
+                   Grid.Column="1"
+                   Text="170"
+                   Keyboard="Numeric" 
+                   HorizontalTextAlignment="Center"
+                   TextChanged="KiloBoy_EntryChanged" />
+
+            <Label x:Name="LabelBoyDegeri"
+                   Grid.Column="2"
+                   Text="170 cm"
+                   VerticalOptions="Center"
+                   Margin="10, 0, 0, 0"
+                   FontAttributes="Bold" />
+        </Grid>
+
+        <BoxView HeightRequest="1" Color="#AAAAAA" Margin="0, 15" />
+
+        <Label Text="VKİ Değeri:" FontSize="Medium" />
+        <Label x:Name="LabelVKISonucu" 
+               Text="24.22" 
+               FontSize="36" 
+               FontAttributes="Bold" 
+               TextColor="#007ACC" 
+               HorizontalOptions="Center" />
+
+        <Label x:Name="LabelVKIDegerlendirme" 
+               Text="Normal Kilolu" 
+               FontSize="22" 
+               HorizontalOptions="Center" 
+               FontAttributes="Italic" />
+
+    </VerticalStackLayout>
+</ContentPage>

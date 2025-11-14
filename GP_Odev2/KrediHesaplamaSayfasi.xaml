@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GP_Odev2.KrediHesaplamaSayfasi"
+             Title="Kredi Hesaplama">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30">
+
+            <Label Text="Kredi Türü Seçiniz" FontSize="Medium" FontAttributes="Bold" />
+            <Picker x:Name="PickerKrediTuru" 
+                 Title="Kredi Türü Seçiniz..."
+                 SelectedIndexChanged="PickerKrediTuru_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>İhtiyaç Kredisi</x:String>
+                    <x:String>Konut Kredisi</x:String>
+                    <x:String>Taşıt Kredisi</x:String>
+                    <x:String>Ticari Kredisi</x:String>
+                </Picker.Items>
+            </Picker>
+            <!--picker yapısına (liste) string türünden itemler ekledim-->
+
+            <Label Text="Kredi Tutarı (TL)" />
+            <Entry x:Name="EntryTutar" 
+                Keyboard="Numeric" 
+                Placeholder="Örn: 10000" />
+            <!--girdileri aldığımız entry kısmı ve istenilen girdiler için labellar-->
+            <Label Text="Yıllık Faiz Oranı (%)" />
+            <Entry x:Name="EntryFaizOrani" 
+                Keyboard="Numeric" 
+                Placeholder="Örn: 1.39" />
+            <!--vade için slider kullandım, yine 2 sütun grid yapısı ile değerini,slider'ı tuttum-->
+            <Label Text="Vade (Ay)" />
+            <Grid ColumnDefinitions="*, Auto">
+                <Slider x:Name="SliderVade" 
+                     Grid.Column="0"
+                     Minimum="1" 
+                     Maximum="120"  
+                     Value="1" 
+                     ValueChanged="SliderVade_ValueChanged" />
+
+                <Label x:Name="LabelVadeDegeri" 
+                    Grid.Column="1" 
+                    Text="1 Ay" 
+                    VerticalOptions="Center" 
+                    FontAttributes="Bold" />
+            </Grid>
+            <!--görünümü ayırmak için boxview (çizgi)-->
+            <BoxView HeightRequest="1" Color="#AAAAAA" Margin="0, 10" />
+            <!--hesaplama yapılması için tetikleyici buton-->
+            <Button Text="HESAPLA" 
+                 x:Name="ButtonHesapla" 
+                 Clicked="ButtonHesapla_Clicked"
+                 BackgroundColor="#6A1B9A" 
+                 TextColor="White" />
+            <!--Hesaplama sonuçları, 3 satır 2 sütun bir grid yapısı içerisine koydum-->
+            <Label Text="Hesaplama Sonuçları:" FontAttributes="Bold" FontSize="Medium" Margin="0, 10, 0, 0" />
+            <Grid RowDefinitions="*,*,*" ColumnDefinitions="*, 2*">
+                <Label Grid.Row="0" Grid.Column="0" Text="Aylık Taksit:" />
+                <Label Grid.Row="0" Grid.Column="1" x:Name="LabelAylikTaksit" Text="0,00 TL" FontAttributes="Bold" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Toplam Ödeme:" />
+                <Label Grid.Row="1" Grid.Column="1" x:Name="LabelToplamOdeme" Text="0,00 TL" FontAttributes="Bold" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Toplam Faiz:" />
+                <Label Grid.Row="2" Grid.Column="1" x:Name="LabelToplamFaiz" Text="0,00 TL" FontAttributes="Bold" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
